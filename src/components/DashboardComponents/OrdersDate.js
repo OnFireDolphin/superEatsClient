@@ -33,9 +33,10 @@ function OrdersDate() {
 
     return (
         <div>
+            <h4 style={{ marginLeft: '60px' }}>Orders vs. Date</h4>
             <BarChart
                 width={500}
-                height={300}
+                height={390}
                 data={data}
                 margin={{
                     top: 5,

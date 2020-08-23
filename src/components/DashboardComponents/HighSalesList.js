@@ -8,8 +8,8 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import CheckCircleSharpIcon from '@material-ui/icons/CheckCircleSharp';
-import ReportProblemSharpIcon from '@material-ui/icons/ReportProblemSharp';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
+import TrendingDownIcon from '@material-ui/icons/TrendingDown';
 const axios = require('axios');
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const LowStockList = () => {
+const HighSalesStock = () => {
     const classes = useStyles();
 
     const [lowStock, setLowStock] = useState([]);
@@ -35,12 +35,12 @@ const LowStockList = () => {
             .then((res) => {
                 let items = res.data.slice(0);
                 items.sort(function (a, b) {
-                    return a.stock - b.stock;
+                    return a.amountSold - b.amountSold;
                 });
-                setLowStock([items[0].stock, items[1].stock]);
+                setLowStock([items[0].amountSold, items[1].amountSold]);
                 setLowProduct([items[0].product, items[1].product]);
 
-                setHighStock([items[items.length - 2].stock, items[items.length - 1].stock]);
+                setHighStock([items[items.length - 2].amountSold, items[items.length - 1].amountSold]);
                 setHighProduct([items[items.length - 2].product, items[items.length - 1].product]);
                 //setLowTwo(items.setLowTwo(items.length - 2));
                 console.log(items);
@@ -52,12 +52,12 @@ const LowStockList = () => {
 
     return (
         <div>
-            <h4>Stock</h4>
+            <h4>Sales</h4>
             <List className={classes.root}>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <CheckCircleSharpIcon></CheckCircleSharpIcon>
+                            <TrendingUpIcon></TrendingUpIcon>
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={highProduct[1]} secondary={highStock[1]} />
@@ -65,7 +65,7 @@ const LowStockList = () => {
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <CheckCircleSharpIcon></CheckCircleSharpIcon>
+                            <TrendingUpIcon></TrendingUpIcon>
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={highProduct[0]} secondary={highStock[0]} />
@@ -73,7 +73,7 @@ const LowStockList = () => {
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <ReportProblemSharpIcon></ReportProblemSharpIcon>
+                            <TrendingDownIcon></TrendingDownIcon>
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={lowProduct[1]} secondary={lowStock[1]} />
@@ -81,7 +81,7 @@ const LowStockList = () => {
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
-                            <ReportProblemSharpIcon></ReportProblemSharpIcon>
+                            <TrendingDownIcon></TrendingDownIcon>
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={lowProduct[0]} secondary={lowStock[0]} />
@@ -91,4 +91,4 @@ const LowStockList = () => {
     );
 };
 
-export default LowStockList;
+export default HighSalesStock;

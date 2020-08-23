@@ -13,6 +13,10 @@ import OrdersCard from './DashboardComponents/OrdersCard';
 import { Text } from 'evergreen-ui';
 import styled from 'styled-components';
 import LowStockList from './DashboardComponents/LowStockList';
+import HighSalesList from './DashboardComponents/HighSalesList';
+
+import BubbleMap from './BubbleMap';
+
 const axios = require('axios');
 
 const useStyles = makeStyles({
@@ -86,15 +90,17 @@ const Dashboard = () => {
     //     </TableContainer>
     // );
     return (
-        <div>
+        <div className="container">
             <Grid>
                 <Row>
                     <Col size={1}>
                         <br></br>
                         <br></br>
-                        <Text fontWeight={800} fontSize={100} display={'inline-block'} float={'left'}>
+                        {/* <Text fontWeight={800} fontSize={100} display={'inline-block'} float={'left'}>
                             Dashboard
-                        </Text>
+                        </Text> */}
+                        <h1>Dashboard</h1>
+                        <BubbleMap />
                     </Col>
                 </Row>
                 <Row>
@@ -113,6 +119,9 @@ const Dashboard = () => {
                 <Row>
                     <Col>
                         <LowStockList></LowStockList>
+                    </Col>
+                    <Col>
+                        <HighSalesList></HighSalesList>
                     </Col>
                 </Row>
             </Grid>
