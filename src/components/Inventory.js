@@ -24,12 +24,15 @@ function Inventory() {
 
     function handleSubmit(e) {
         console.log(product, stock, amountSold, price);
-        axios.post('https://supereatsserver.azurewebsites.net/inventory/', {
-            product,
-            stock,
-            amountSold,
-            price,
-        });
+        axios
+            .post('https://supereatsserver.azurewebsites.net/inventory/', {
+                product,
+                stock,
+                amountSold,
+                price,
+            })
+            .then()
+            .catch((e) => console.log(e));
     }
 
     return (
